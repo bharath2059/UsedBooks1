@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "589734994819",
+    "project_id": "ubooks-b7fe6",
+    "storage_bucket": "ubooks-b7fe6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589734994819:android:dc273ec762a445e724ccb6",
+        "android_client_info": {
+          "package_name": "com.ubooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589734994819-2bmt2hgvrl69dbq3qngrocksfotav1p0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsj0OxT3dKN7knBAOYm-DWCEWvHDbHF0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589734994819-2bmt2hgvrl69dbq3qngrocksfotav1p0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
