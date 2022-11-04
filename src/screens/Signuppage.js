@@ -77,10 +77,6 @@ const CreateSignupPage = ({navigation}) => {
       Alert.alert('Your password is not equal to confirm password');
       return;
     }
-    if (password.length <= 5) {
-      Alert.alert('please enter valid password');
-      return;
-    }
     signup(email, password)
       .then(() => {
         Alert.alert('your account is created with ', email);
@@ -95,8 +91,14 @@ const CreateSignupPage = ({navigation}) => {
           console.log('That email address is invalid!');
         }
 
-        console.error(error);
-        Alert.alert(`${error}`);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
       });
 
     return;
