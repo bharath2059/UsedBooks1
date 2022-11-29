@@ -10,8 +10,15 @@ import {
   Alert,
   Image,
 } from 'react-native';
+import {isUser} from '../Firebase/authentication';
 
 const Profilepage = ({navigation, routes}) => {
+  const [email, setEmail] = React.useState('');
+  const [name, setName] = React.useState('');
+  React.useEffect(() => {
+    setEmail(isUser().email);
+    setName(isUser().displayName);
+  }, []);
   const SignOut = () => {
     Alert.alert('Attention', 'Are you sure to sign out', [
       {
@@ -39,8 +46,8 @@ const Profilepage = ({navigation, routes}) => {
           />
         </View>
         <View>
-          <Text style={styles.textStyle}>Username : Kartik Soni</Text>
-          <Text style={styles.textStyle}>Email : sonikartik@gmail.com</Text>
+          <Text style={styles.textStyle}>Username : {name}</Text>
+          <Text style={styles.textStyle}>Email :-{email}</Text>
         </View>
         <View>
           <TouchableOpacity style={styles.buttonStyle}>

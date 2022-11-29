@@ -77,7 +77,7 @@ const CreateSignupPage = ({navigation}) => {
       Alert.alert('Your password is not equal to confirm password');
       return;
     }
-    signup(email, password)
+    signup(email, password, name)
       .then(() => {
         Alert.alert('your account is created with ', email);
         navigation.push('LoginPage');
@@ -145,7 +145,14 @@ const CreateSignupPage = ({navigation}) => {
           <Text style={styles.buttonTextStyle}>Signup</Text>
         </TouchableOpacity>
 
-        <Text style={styles.link} onPress={() => {}}>
+        <Text
+          style={styles.link}
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'LoginPage'}],
+            });
+          }}>
           Already have an account...?
         </Text>
       </View>

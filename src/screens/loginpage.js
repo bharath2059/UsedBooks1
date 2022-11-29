@@ -36,8 +36,16 @@ const CreateLoginPage = ({navigation}) => {
   const [password, onPasswordChange] = React.useState(password);
 
   const doSignIn = () => {
-    if (!email || !password) {
-      Alert.alert('please enter Login details');
+    if (!email && !password) {
+      Alert.alert('please enter your email & password');
+      return;
+    }
+    if (!email) {
+      Alert.alert('please enter your email');
+      return;
+    }
+    if (!password) {
+      Alert.alert('please enter your password');
       return;
     }
     signIn(email, password)
