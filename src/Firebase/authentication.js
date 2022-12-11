@@ -24,3 +24,11 @@ export function isUser() {
     return user;
   }
 }
+
+export async function logout() {
+  await auth()
+    .signOut()
+    .then(() => {
+      console.log('user signedout');
+    });
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from 'react';
 import {
   SafeAreaView,
@@ -11,10 +11,12 @@ import {
   Image,
 } from 'react-native';
 import {isUser} from '../Firebase/authentication';
+import {logout} from '../Firebase/authentication';
 
 const Profilepage = ({navigation, routes}) => {
   const [email, setEmail] = React.useState('');
   const [name, setName] = React.useState('');
+  const [logedOut, setLogedOut] = React.useState(false);
   React.useEffect(() => {
     setEmail(isUser().email);
     setName(isUser().displayName);
@@ -24,6 +26,7 @@ const Profilepage = ({navigation, routes}) => {
       {
         text: 'yes',
         onPress: () => {
+          logout();
           navigation.reset({index: 0, routes: [{name: 'LoginPage'}]});
         },
       },
@@ -35,6 +38,7 @@ const Profilepage = ({navigation, routes}) => {
       },
     ]);
   };
+
   return (
     <View style={styles.Wrapper}>
       <View style={styles.box1}>
