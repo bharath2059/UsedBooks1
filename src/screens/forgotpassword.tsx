@@ -22,8 +22,8 @@ const config = {
     },
   },
 };
-const Forgotpass = ({navigation}) => {
-  const [email, onEmailChange] = React.useState(email);
+const Forgotpass = ({navigation}: any) => {
+  const [email, onEmailChange] = React.useState<string>('');
   React.useEffect(() => {}, [email]);
   return (
     <View style={styles.Wrapper}>

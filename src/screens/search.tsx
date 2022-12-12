@@ -9,13 +9,16 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import {useAppData} from '../providers/providers';
 
-const Search = ({navigation}) => {
+const Search = ({navigation}: any) => {
   const [Title, setsearchbook] = useState('');
+  const {activeUser} = useAppData();
   return (
     <SafeAreaView style={styles.Wrapper}>
       <View style={styles.box1}>
         <Text style={styles.HeadingText}>Search Book</Text>
+        <Text style={styles.HeadingText}>{activeUser.name}</Text>
         <View style={styles.textInputStyle}>
           <TextInput
             style={styles.InputTextStyle}

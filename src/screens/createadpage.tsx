@@ -26,7 +26,7 @@ const CreateAdPage = () => {
             <Text
               style={styles.InputTextStyle}
               onPress={() => {
-                alert('Select Photo');
+                Alert.alert('Select Photo');
               }}>
               Click Here to Add Image of the book
             </Text>
@@ -82,7 +82,7 @@ const CreateAdPage = () => {
           <TouchableOpacity
             style={styles.buttonStyle}
             onPress={() => {
-              alert('Your Ad is posted Succesfully');
+              Alert.alert('Your Ad is posted Succesfully');
             }}>
             <Text style={styles.buttonTextStyle}>PostAd</Text>
           </TouchableOpacity>

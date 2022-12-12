@@ -40,12 +40,13 @@ const config = {
     },
   },
 };
-const CreateSignupPage = ({navigation}) => {
-  const [email, onEmailChange] = React.useState(email);
-  const [password, onPasswordChange] = React.useState(password);
-  const [name, onNameChange] = React.useState(name);
-  const [confirmPassword, onConfirmPasswordChange] =
-    React.useState(confirmPassword);
+const CreateSignupPage = ({navigation}: any) => {
+  const [email, onEmailChange] = React.useState<string | null>('');
+  const [password, onPasswordChange] = React.useState<string | null>('');
+  const [name, onNameChange] = React.useState<string | null>('');
+  const [confirmPassword, onConfirmPasswordChange] = React.useState<
+    string | null
+  >('');
 
   React.useEffect(() => {
     if (name === '') {
@@ -68,7 +69,7 @@ const CreateSignupPage = ({navigation}) => {
     }
   }, [confirmPassword]);
 
-  function createAccount(email, password) {
+  function createAccount(email: string, password: string) {
     if (!name || !email || !password || !confirmPassword) {
       Alert.alert('Please enter all the required details');
       return;
@@ -94,9 +95,9 @@ const CreateSignupPage = ({navigation}) => {
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
+          Alert.alert('The password is too weak.');
         } else {
-          alert(errorMessage);
+          Alert.alert(errorMessage);
         }
         console.log(error);
       });
@@ -140,7 +141,7 @@ const CreateSignupPage = ({navigation}) => {
         <TouchableOpacity
           style={styles.buttonStyle}
           onPress={() => {
-            createAccount(email, password);
+            createAccount(email ? email : '', password ? password : '');
           }}>
           <Text style={styles.buttonTextStyle}>Signup</Text>
         </TouchableOpacity>

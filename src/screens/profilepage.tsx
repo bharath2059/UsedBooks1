@@ -10,16 +10,20 @@ import {
   Alert,
   Image,
 } from 'react-native';
+import {act} from 'react-test-renderer';
 import {isUser} from '../Firebase/authentication';
 import {logout} from '../Firebase/authentication';
+import {useAppData} from '../providers/providers';
 
-const Profilepage = ({navigation, routes}) => {
+const Profilepage = ({navigation, routes}: any) => {
   const [email, setEmail] = React.useState('');
   const [name, setName] = React.useState('');
   const [logedOut, setLogedOut] = React.useState(false);
+  const {activeUser} = useAppData();
   React.useEffect(() => {
-    setEmail(isUser().email);
-    setName(isUser().displayName);
+    console.log(activeUser);
+    setEmail(activeUser.email);
+    setName(activeUser.name);
   }, []);
   const SignOut = () => {
     Alert.alert('Attention', 'Are you sure to sign out', [

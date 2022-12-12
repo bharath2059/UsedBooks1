@@ -12,13 +12,16 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Search from './search';
 import CreateAdPage from './createadpage';
 import Profilepage from './profilepage';
+import {useAppData} from '../providers/providers';
 const Tabs = createBottomTabNavigator();
 
 const Homepage = () => {
+  const {activeUser} = useAppData();
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.box1}>
         <Text style={styles.headingstyle}>UBooks</Text>
+        <Text style={styles.headingstyle}>Welcome {activeUser.name}</Text>
       </View>
       <View style={styles.box2}>
         <View style={styles.ListStyle}>

@@ -7,7 +7,7 @@ import {Image} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 import {StyleSheet} from 'react-native';
 
-const WelcomePage = ({navigation}) => {
+const WelcomePage = ({navigation}: any) => {
   return (
     <View style={styles.Main}>
       <SafeAreaView style={styles.wrapper}>

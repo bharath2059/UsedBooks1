@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {TextInput, StyleSheet, View, Pressable, Text} from 'react-native';
 
-const Input = props => {
+const Input = (props: any) => {
   const {config} = props;
   const [type, setType] = React.useState(config.type);
   const switchPasswordMode = () => {
@@ -18,7 +18,6 @@ const Input = props => {
       <View style={[styles.inputContainer]}>
         <TextInput
           style={styles.inputField}
-          name={config.name}
           placeholder={config.placeholder}
           autoCapitalize="none"
           autoCorrect={false}
@@ -34,9 +33,7 @@ const Input = props => {
           <Pressable
             onPress={switchPasswordMode}
             style={styles.inputFieldButton}>
-            <Text style={styles.showButtonText}>
-              {type === 'password' ? 'Show' : 'Hide'}
-            </Text>
+            <Text>{type === 'password' ? 'Show' : 'Hide'}</Text>
           </Pressable>
         ) : null}
       </View>
@@ -71,8 +68,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 25,
   },
-  //   showButtonText: {
-  //     color: CSS_CONSTANTS.COLOR_PRIMARY,
-  //   },
 });
 export default Input;

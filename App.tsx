@@ -19,6 +19,7 @@ import WelcomePage from './src/screens/welcomepage';
 import Forgotpass from './src/screens/forgotpassword';
 import Search from './src/screens/search';
 import auth from '@react-native-firebase/auth';
+import AppStateProvider, {useAppData} from './src/providers/providers';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,8 +27,10 @@ const App = () => {
   let initialRouteName = 'Welcome';
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
+  //const {setActiveUser, activeUser} = useAppData();
 
-  function onAuthstateChanged(user) {
+  function onAuthstateChanged(user: any) {
+    console.log(user);
     setUser(user);
     if (loading) setLoading(false);
   }
@@ -45,19 +48,28 @@ const App = () => {
     initialRouteName = 'Homepage';
   }
 
+  // useEffect(() => {
+  //   if (user) {
+  //     setActiveUser(user);
+  //     console.log(`ActiveUser : - ${activeUser}`);
+  //   }
+  // }, []);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName={initialRouteName}
-        screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LoginPage" component={CreateLoginPage} />
-        <Stack.Screen name="SignUp" component={CreateSignupPage} />
-        <Stack.Screen name="Homepage" component={Homepage} />
-        <Stack.Screen name="Forgotpasspage" component={Forgotpass} />
+      <AppStateProvider>
+        <Stack.Navigator
+          initialRouteName={initialRouteName}
+          screenOptions={{headerShown: false}}>
+          <Stack.Screen name="LoginPage" component={CreateLoginPage} />
+          <Stack.Screen name="SignUp" component={CreateSignupPage} />
+          <Stack.Screen name="Homepage" component={Homepage} />
+          <Stack.Screen name="Forgotpasspage" component={Forgotpass} />
 
-        <Stack.Screen name="Search" component={Search} />
-        <Stack.Screen name="Welcome" component={WelcomePage} />
-      </Stack.Navigator>
+          <Stack.Screen name="Search" component={Search} />
+          <Stack.Screen name="Welcome" component={WelcomePage} />
+        </Stack.Navigator>
+      </AppStateProvider>
     </NavigationContainer>
   );
 };

@@ -31,9 +31,9 @@ const config = {
   },
 };
 
-const CreateLoginPage = ({navigation}) => {
-  const [email, onEmailChange] = React.useState(email);
-  const [password, onPasswordChange] = React.useState(password);
+const CreateLoginPage = ({navigation}: any) => {
+  const [email, onEmailChange] = React.useState<string | null>('');
+  const [password, onPasswordChange] = React.useState<string | null>('');
 
   const doSignIn = () => {
     if (!email && !password) {
